@@ -1,0 +1,119 @@
+// return the all users but only can access admin all users
+GET http://localhost:5000/api/users
+Accept: application/json
+
+//return single users
+GET http://localhost:5000/api/users/userid
+Accept: application/json
+
+// Detele user
+DELETE http://localhost:5000/api/users/userid
+Accept: application/json
+{id:req.params.userid}
+
+###
+//regtistration for user
+POST http://localhost:5000/api/users
+Content-Type: application/json
+{
+    "name":"vivek kumar",
+    "email":"vivekmethew8@gmail.com",
+    "password":"123456",
+     "phone":"9718546885"
+}
+###
+//login
+POST http://localhost:5000/api/login
+Content-Type: application/json
+{
+    "email":"vivekmethew8@gmail.com",
+    "password":"123456"
+}
+
+// edit user through admin login
+PUT http://localhost:5000/api/users/userid
+Content-Type: application/json
+Authorization:"Bearer token"
+{req.body}
+
+
+###
+// Get all auctions
+GET http://localhost:5000/api/auctions
+Content-Type: application/json
+
+// Get single auction
+GET http://localhost:5000/api/auctions/auc_id
+Content-Type: application/json
+{auc_id:req.params.auc_id}
+
+
+###
+//start auction using admin portal and can only add auction admin
+POST http://localhost:5000/api/auctions
+Content-Type: application/json
+Authorization:"Bearer token"
+{ 
+    "a_type": "cars",
+    "a_name": "auction",
+    "a_price":1364,
+    "e_date": "11/03/2021",
+    "e_time": "11:32 PM",
+    "img_urls": "hdsgjhsgsgsjsgsgjsgjgsd",
+    "desc":"this is my moving task and management"
+}
+
+
+// Get single auction
+GET http://localhost:5000/api/auctions/auc_id
+Content-Type: application/json
+{auc_id:req.params.auc_id}
+
+
+// Delete single auction
+DELETE http://localhost:5000/api/auctions/auc_id
+Content-Type: application/json
+Authorization:"Bearer token"
+{auc_id:req.params.auc_id}
+
+
+
+###
+// edit aution through admin login
+PUT http://localhost:5000/api/auctions/auc_id
+Content-Type: application/json
+Authorization:"Bearer token"
+{req.body}
+
+
+// Get users bids
+GET http://localhost:5000/api/bids
+Content-Type: application/json
+Authorization:"Bearer token"
+
+// Get single bids
+GET http://localhost:5000/api/bids/bid_id
+Content-Type: application/json
+Authorization:"Bearer token"
+
+//Get all bids by user id filter
+GET http://localhost:5000/api/user_bids/userid
+Content-Type: application/json
+Authorization:"Bearer token"
+
+//POST for add bids
+POST http://localhost:5000/api/bids
+Content-Type: application/json
+Authorization:"Bearer token"
+{
+ "a_id": "10nal1l4kk9wbu2e",
+"a_name": "cars",
+"a_price": 1236
+}
+
+//DELETE bid 
+DELETE http://localhost:5000/api/bids/bid_id
+Content-Type: application/json
+Authorization:"Bearer token"
+
+
